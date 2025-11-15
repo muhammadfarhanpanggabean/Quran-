@@ -1,0 +1,32 @@
+[
+    {
+        "ayah": "قُلْ هُوَ اللَّهُ أَحَدٌ",
+        "options": ["An-Nas", "Al-Falaq", "Al-Ikhlas", "Al-Fatihah"],
+        "answer": "Al-Ikhlas"
+    },
+    {
+        "ayah": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+        "options": ["Al-Baqarah", "Al-Fatihah", "Yasin", "An-Nas"],
+        "answer": "Al-Fatihah"
+    },
+    {
+        "ayah": "قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
+        "options": ["Al-Ikhlas", "Al-Falaq", "An-Nasr", "An-Nas"],
+        "answer": "An-Nas"
+    },
+    {
+        "ayah": "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ",
+        "options": ["Al-Falaq", "Al-Masad", "Al-Kafirun", "An-Nas"],
+        "answer": "Al-Falaq"
+    },
+    {
+        "ayah": "إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ",
+        "options": ["Al-Kauthar", "An-Nasr", "Al-Masad", "Al-Fil"],
+        "answer": "An-Nasr"
+    },
+    {
+        "ayah": "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ",
+        "options": ["Al-Ma'un", "Al-Kafirun", "Al-Kauthar", "Al-Fil"],
+        "answer": "Al-Kauthar"
+    }
+]
