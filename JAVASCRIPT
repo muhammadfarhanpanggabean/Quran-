@@ -1,0 +1,125 @@
+// 1. Ambil Elemen HTML
+const ayahTextEl = document.getElementById('ayah-text');
+const optionsContainerEl = document.getElementById('options-container');
+const feedbackTextEl = document.getElementById('feedback-text');
+const scoreTextEl = document.getElementById('score-text');
+const nextButtonEl = document.getElementById('next-button');
+
+// 2. Data Pertanyaan (Ayat, Pilihan, Jawaban)
+// Anda BISA MENAMBAHKAN lebih banyak pertanyaan di sini
+const questions = [
+    {
+        ayah: "قُلْ هُوَ اللَّهُ أَحَدٌ",
+        options: ["An-Nas", "Al-Falaq", "Al-Ikhlas", "Al-Fatihah"],
+        answer: "Al-Ikhlas"
+    },
+    {
+        ayah: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+        options: ["Al-Baqarah", "Al-Fatihah", "Yasin", "An-Nas"],
+        answer: "Al-Fatihah"
+    },
+    {
+        ayah: "قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
+        options: ["Al-Ikhlas", "Al-Falaq", "An-Nasr", "An-Nas"],
+        answer: "An-Nas"
+    },
+    {
+        ayah: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ",
+        options: ["Al-Falaq", "Al-Masad", "Al-Kafirun", "An-Nas"],
+        answer: "Al-Falaq"
+    },
+    {
+        ayah: "إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ",
+        options: ["Al-Kauthar", "An-Nasr", "Al-Masad", "Al-Fil"],
+        answer: "An-Nasr"
+    },
+    {
+        ayah: "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ",
+        options: ["Al-Ma'un", "Al-Kafirun", "Al-Kauthar", "Al-Fil"],
+        answer: "Al-Kauthar"
+    }
+];
+
+// 3. Variabel Status Game
+let currentQuestionIndex = 0;
+let score = 0;
+let shuffledQuestions = [];
+
+// 4. Fungsi Utama
+function startGame() {
+    currentQuestionIndex = 0;
+    score = 0;
+    // Acak urutan pertanyaan
+    shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+    scoreTextEl.textContent = `Skor: 0 / ${shuffledQuestions.length}`;
+    nextButtonEl.textContent = "Soal Berikutnya";
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+}
+
+function showQuestion(question) {
+    // Reset tampilan
+    ayahTextEl.textContent = question.ayah;
+    optionsContainerEl.innerHTML = '';
+    feedbackTextEl.textContent = '';
+    feedbackTextEl.className = '';
+    nextButtonEl.classList.add('hide');
+
+    // Buat tombol pilihan
+    question.options.forEach(option => {
+        const button = document.createElement('button');
+        button.textContent = option;
+        button.classList.add('option-btn');
+        button.addEventListener('click', () => selectAnswer(option, question.answer, button));
+        optionsContainerEl.appendChild(button);
+    });
+}
+
+function selectAnswer(selectedOption, correctAnswer, clickedButton) {
+    // Nonaktifkan semua tombol setelah menjawab
+    Array.from(optionsContainerEl.children).forEach(button => {
+        button.disabled = true;
+        // Tampilkan jawaban yang benar
+        if (button.textContent === correctAnswer) {
+            button.classList.add('correct');
+        }
+    });
+
+    // Cek jawaban
+    if (selectedOption === correctAnswer) {
+        score++;
+        feedbackTextEl.textContent = "Benar! (Jago)";
+        feedbackTextEl.classList.add('feedback-correct');
+    } else {
+        feedbackTextEl.textContent = `Salah. Jawaban: ${correctAnswer}`;
+        feedbackTextEl.classList.add('feedback-wrong');
+        clickedButton.classList.add('wrong'); // Tandai jawaban yang salah
+    }
+
+    // Update skor
+    scoreTextEl.textContent = `Skor: ${score} / ${shuffledQuestions.length}`;
+
+    // Tampilkan tombol lanjut
+    if (currentQuestionIndex < shuffledQuestions.length - 1) {
+        nextButtonEl.textContent = "Soal Berikutnya";
+    } else {
+        nextButtonEl.textContent = "Ulangi Permainan";
+    }
+    nextButtonEl.classList.remove('hide');
+}
+
+function handleNextButton() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < shuffledQuestions.length) {
+        showQuestion(shuffledQuestions[currentQuestionIndex]);
+    } else {
+        // Game Selesai
+        alert(`Permainan Selesai!\nSkor Akhir Anda: ${score} dari ${shuffledQuestions.length}`);
+        startGame(); // Mulai ulang
+    }
+}
+
+// 5. Event Listener
+nextButtonEl.addEventListener('click', handleNextButton);
+
+// 6. Mulai Game saat halaman dimuat
+startGame();
