@@ -1,0 +1,138 @@
+/* Pengaturan Dasar */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #006341;
+}
+
+/* Kotak Game */
+#game-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Teks Ayat (Styling Arab) */
+#ayah-text {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 2.2rem; /* Ukuran font besar agar jelas */
+    text-align: right;
+    line-height: 1.8;
+    border-right: 5px solid #006341;
+    padding-right: 15px;
+    margin: 20px 0;
+    min-height: 100px; /* Memberi ruang agar tidak lompat-lompat */
+}
+
+/* Teks Skor */
+#score-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: right;
+    color: #555;
+}
+
+/* Pilihan Jawaban */
+#options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Jarak antar tombol */
+    margin-top: 20px;
+}
+
+.option-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option-btn:not(:disabled):hover {
+    background-color: #e9e9e9;
+    border-color: #006341;
+}
+
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Feedback setelah menjawab */
+.option-btn.correct {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    font-weight: bold;
+}
+
+.option-btn.wrong {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    font-weight: bold;
+}
+
+/* Teks Feedback (Benar/Salah) */
+#feedback-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    min-height: 1.2em; /* Beri ruang agar layout stabil */
+}
+
+.feedback-correct {
+    color: #155724;
+}
+
+.feedback-wrong {
+    color: #721c24;
+}
+
+
+/* Tombol Lanjut */
+#next-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s;
+}
+
+#next-button:hover {
+    background-color: #0056b3;
+}
+
+/* Utility class untuk menyembunyikan elemen */
+.hide {
+    display: none;
+}
